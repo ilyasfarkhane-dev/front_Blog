@@ -73,13 +73,17 @@ export function fetchSinglePost(postId) {
 
 // Toggle Like Post
 export function toggleLikePost(postId) {
-  return async (dispatch,getState) => {
+  return async (dispatch, getState) => {
     try {
-      const { data } = await request.put(`/api/posts/like/${postId}`, {}, {
-        headers: {
-          Authorization: "Bearer " + getState().auth.user.token,
+      const { data } = await request.put(
+        `/api/posts/like/${postId}`,
+        {},
+        {
+          headers: {
+            Authorization: "Bearer " + getState().auth.user.token,
+          },
         }
-      });
+      );
       dispatch(postActions.setLike(data));
     } catch (error) {
       toast.error(error.response.data.message);
@@ -88,14 +92,14 @@ export function toggleLikePost(postId) {
 }
 
 // Update Post Image
-export function updatePostImage(newImage,postId) {
-  return async (dispatch,getState) => {
+export function updatePostImage(newImage, postId) {
+  return async (dispatch, getState) => {
     try {
       await request.put(`/api/posts/update-image/${postId}`, newImage, {
         headers: {
           Authorization: "Bearer " + getState().auth.user.token,
-          "Content-Type":"multipart/form-data",
-        }
+          "Content-Type": "multipart/form-data",
+        },
       });
       toast.success("New post image uploaded successfully");
     } catch (error) {
@@ -105,13 +109,13 @@ export function updatePostImage(newImage,postId) {
 }
 
 // Update Post
-export function updatePost(newPost,postId) {
-  return async (dispatch,getState) => {
+export function updatePost(newPost, postId) {
+  return async (dispatch, getState) => {
     try {
       const { data } = await request.put(`/api/posts/${postId}`, newPost, {
         headers: {
           Authorization: "Bearer " + getState().auth.user.token,
-        }
+        },
       });
       dispatch(postActions.setPost(data));
     } catch (error) {
@@ -122,12 +126,12 @@ export function updatePost(newPost,postId) {
 
 // Delete Post
 export function deletePost(postId) {
-  return async (dispatch,getState) => {
+  return async (dispatch, getState) => {
     try {
       const { data } = await request.delete(`/api/posts/${postId}`, {
         headers: {
           Authorization: "Bearer " + getState().auth.user.token,
-        }
+        },
       });
       dispatch(postActions.deletePost(data.postId));
       toast.success(data.message);

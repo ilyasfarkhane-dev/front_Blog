@@ -2,6 +2,7 @@ import cars from "../images/cars.jpg";
 import food from "../images/food.jpg";
 import sport from "../images/sport.jpg";
 import animals from "../images/animals.jpg";
+import rca from "../images/rca.jpeg";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 export default function Example() {
@@ -46,16 +47,16 @@ export default function Example() {
                     <div className="grid flex-shrink-0 grid-cols-1 gap-y-6 lg:gap-y-8">
                       <div className="h-64 w-44 overflow-hidden rounded-lg">
                         <img
-                          src="https://tailwindui.com/img/ecommerce-images/home-page-03-hero-image-tile-03.jpg"
+                          src={
+                            "https://tailwindui.com/img/ecommerce-images/home-page-03-hero-image-tile-03.jpg"
+                          }
                           alt=""
                           className="h-full w-full object-cover object-center"
                         />
                       </div>
                       <div className="h-64 w-44 overflow-hidden rounded-lg">
                         <img
-                          src={
-                            "https://tailwindui.com/img/ecommerce-images/home-page-03-hero-image-tile-04.jpg"
-                          }
+                          src={rca}
                           alt=""
                           className="h-full w-full object-cover object-center"
                         />
